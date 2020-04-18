@@ -24,11 +24,11 @@ public class RevesPuzzle {
 
     }
 
-    private static void revesStepThree(int n, int TopDisc, String from, String temp, String to) {
-        if (n == TopDisc) return;
-        revesStepThree(n - 1, TopDisc, from, temp, to);
+    private static void revesStepThree(int n, int topDisc, String from, String temp, String to) {
+        if (n == topDisc) return;
+        revesStepThree(n - 1, topDisc, from, to, temp);
         System.out.println("Move disc " + n + " from " + from + " to " + to);
-        revesStepThree(n - 1, TopDisc, temp, from, to);
+        revesStepThree(n - 1, topDisc, temp, from, to);
 
     }
 
