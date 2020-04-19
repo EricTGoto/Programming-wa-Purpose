@@ -3,24 +3,31 @@
 
 public class RevesPuzzle {
 
-    private static void revesPuzzle(int n) {
-        int k = (int) Math.rint(n + 1 - Math.sqrt(2 * n + 1));
-        hanoi(k, "A", "B", "C");
-        revesStepThree(n, k, "A", "B", "D");
-        hanoi(k, "C", "B", "D");
-
-    }
-
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
-        revesPuzzle(n);
+        int k = (int) Math.rint(n + 1 - Math.sqrt(2 * n + 1));
+
+        revesStepTwo(k, "A", "B", "C", "D");
+        revesStepThree(n, k, "A", "C", "D");
+        revesStepTwo(k, "B", "D", "C", "A");
     }
 
-    private static void hanoi(int n, String from, String temp, String to) {
-        if (n == 0) return;
-        hanoi(n - 1, from, to, temp);
-        System.out.println("Move disc " + n + " from " + from + " to " + to);
-        hanoi(n - 1, temp, from, to);
+    private static void revesStepTwo(int k, String from, String to, String temp1, String temp2) {
+
+        if (k == 0) {
+            return;
+        }
+
+        if (k == 1) {
+            System.out.println("Move disc " + k + " from " + from + " to " + to);
+            return;
+        }
+
+        revesStepTwo(k - 1, from, temp1, temp2, to);
+        revesStepTwo(k - 2, from, temp1, temp2, to);
+        System.out.println("Move disc " + k + " from " + from + " to " + to);
+        revesStepTwo(k - 2, temp1, to, temp2, from);
+        revesStepTwo(k - 1, temp1, to, temp2, from);
 
     }
 
