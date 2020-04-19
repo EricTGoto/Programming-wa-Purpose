@@ -19,19 +19,20 @@ public class RecursiveSquares {
         double xRight = x + length/2;
         double yBot = y - length/2;
         double xLeft = x - length/2;
-        drawSquare(xLeft, yTop, length / 2);
-        drawSquare(xRight, yTop, length / 2);
 
         draw(n - 1, xRight, yTop, length / 2);
         draw(n - 1, xLeft, yTop, length / 2);
-
         drawSquare(x, y, length);
-
-        drawSquare(xLeft, yBot, length / 2);
-        drawSquare(xRight, yBot, length / 2);
-
-        draw(n - 1, xRight, yBot, length / 2);
+        draw(n- 1, xRight, yBot, length / 2);
         draw(n - 1, xLeft, yBot, length / 2);
+        /*
+        if (n>1) {
+            drawSquare(xLeft, yTop, length / 2);
+            drawSquare(xRight, yTop, length / 2);
+            drawSquare(xLeft, yBot, length / 2);
+            drawSquare(xRight, yBot, length / 2);
+        }
+        */
 
     }
 
