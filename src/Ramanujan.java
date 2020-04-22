@@ -7,9 +7,10 @@ public class Ramanujan {
         int lowerBound = 0;
         double checkNumRounded=0;
 
+        // we can check that a cubic pair exists if (n-k^3)^(1/3) is an integer
         for (int k = biggestCube - 1; k > lowerBound; k--) {
 
-            double checkNum = Math.cbrt(n - Math.pow(k, 3));
+            double checkNum = Math.cbrt(n - k*k*k);
             checkNumRounded = Math.rint(checkNum);
 
             if ((checkNum - checkNumRounded) == 0) {
@@ -18,9 +19,10 @@ public class Ramanujan {
             }
         }
 
+        // we need two pairs for a number to be  Ramanujan number
         for (int k=biggestCube;k>lowerBound;k--){
 
-            double checkNum=Math.cbrt(n-Math.pow(k,3));
+            double checkNum=Math.cbrt(n-k*k*k);
             double checkNumRounded2=Math.rint(checkNum);
             if (checkNumRounded2==checkNumRounded) continue;
 
