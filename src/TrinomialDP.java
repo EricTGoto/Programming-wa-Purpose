@@ -1,6 +1,9 @@
 public class TrinomialDP {
 
     public static long trinomial(int n, int k) {
+        if (k > n) return 0;
+        if (k < -1 * n) return 0;
+
         long[][] coefficients = new long[n + 1][2 * n + 3];
         coefficients[0][n + 1] = 1;
         for (int row = 1; row <= n; row++) {
