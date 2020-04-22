@@ -3,30 +3,29 @@ public class Ramanujan {
     // worst case run time must be n^(1/3)
 
     public static boolean isRamanujan(long n) {
-        int biggestCube = (int) Math.cbrt(n);
+        long biggestCube = (int) Math.cbrt(n);
+        double checkNumRounded = 0;
+        double pairNumOne = 0;
         int lowerBound = 0;
-        double checkNumRounded=0;
+        int numPair=0;
+        final double THRESHOLD = .0000000000001;
 
+        boolean found = false;
         // we can check that a cubic pair exists if (n-k^3)^(1/3) is an integer
-        for (int k = biggestCube - 1; k > lowerBound; k--) {
+        for (long k = biggestCube; k > lowerBound; k--) {
 
-            double checkNum = Math.cbrt(n - k*k*k);
+            double checkNum = Math.cbrt(n - k * k * k);
             checkNumRounded = Math.rint(checkNum);
 
-            if ((checkNum - checkNumRounded) == 0) {
-                biggestCube=--k;
-                break;
+            if (Math.abs(checkNum - checkNumRounded) < THRESHOLD) {
+                if (pairNumOne==checkNumRounded){
+                    k--;
+                    continue;
+                }
+                pairNumOne = k;
+                numPair++;
             }
-        }
-
-        // we need two pairs for a number to be  Ramanujan number
-        for (int k=biggestCube;k>lowerBound;k--){
-
-            double checkNum=Math.cbrt(n-k*k*k);
-            double checkNumRounded2=Math.rint(checkNum);
-            if (checkNumRounded2==checkNumRounded) continue;
-
-            if (checkNum-checkNumRounded2==0) return true;
+            if (numPair==2) return true;
 
         }
 
@@ -35,5 +34,6 @@ public class Ramanujan {
 
     public static void main(String[] args) {
         System.out.println(isRamanujan(Long.parseLong(args[0])));
+
     }
 }
