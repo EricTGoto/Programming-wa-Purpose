@@ -10,7 +10,6 @@ public class Ramanujan {
         int numPair = 0;
         final double THRESHOLD = .0000000000001;
 
-        boolean found = false;
         // we can check that a cubic pair exists if (n-k^3)^(1/3) is an integer
         for (long k = biggestCube; k > lowerBound; k--) {
 
