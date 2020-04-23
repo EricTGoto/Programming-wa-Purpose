@@ -1,5 +1,5 @@
 public class Inversions {
-
+    // counts the number of inversions in a given array
     public static long count(int[] a) {
         long inversions = 0;
         for (int i = 0; i < a.length; i++) {
@@ -10,6 +10,7 @@ public class Inversions {
         return inversions;
     }
 
+    // generates an array of length n with k inversions
     public static int[] generate(int n, long k) {
         int[] array = new int[n];
         int length = array.length;
