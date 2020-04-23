@@ -3,12 +3,44 @@ public class MaximumSquareSubmatrix {
     // contiguous as in row and column indices must be continuous
     // assume that the array is a square matrix only containing 0s and 1s
 
-    public static int size(int[][] a){
-
+    public static int size(int[][] a) {
+        int[][] b = new int[a.length + 1][a.length + 1];
+        int max=0;
+        for (int i = 1; i < b.length; i++)
+            for (int k = 1; k < b.length; k++) {
+                if (a[i - 1][k - 1] == 0) {
+                    b[i][k] = Math.min(b[i][k - 1], Math.min(b[i - 1][k - 1], b[i - 1][k]));
+                    if (b[i][k]>max) max=b[i][k];
+                } else {
+                    b[i][k] = Math.min(b[i][k - 1], Math.min(b[i - 1][k - 1], b[i - 1][k])) + 1;
+                    if (b[i][k]>max) max=b[i][k];
+                }
+            }
+        return max;
     }
 
     public static void main(String[] args) {
-
+        int[][] test = {
+                {
+                        0, 1, 0, 0, 1, 0
+                },
+                {
+                        0, 1, 0, 1, 1, 1
+                },
+                {
+                        0, 1, 0, 1, 1, 1
+                },
+                {
+                        1, 0, 0, 1, 1, 1
+                },
+                {
+                        0, 0, 1, 0, 0, 0
+                },
+                {
+                        0, 0, 1, 0, 1, 1
+                }
+        };
+        System.out.println(size(test));
     }
 
 }
