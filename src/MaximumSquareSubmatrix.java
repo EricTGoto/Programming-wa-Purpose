@@ -5,42 +5,36 @@ public class MaximumSquareSubmatrix {
 
     public static int size(int[][] a) {
         int[][] b = new int[a.length + 1][a.length + 1];
-        int max=0;
+        int max = 0;
         for (int i = 1; i < b.length; i++)
             for (int k = 1; k < b.length; k++) {
                 if (a[i - 1][k - 1] == 0) {
                     b[i][k] = Math.min(b[i][k - 1], Math.min(b[i - 1][k - 1], b[i - 1][k]));
-                    if (b[i][k]>max) max=b[i][k];
+                    if (b[i][k] > max) max = b[i][k];
                 } else {
                     b[i][k] = Math.min(b[i][k - 1], Math.min(b[i - 1][k - 1], b[i - 1][k])) + 1;
-                    if (b[i][k]>max) max=b[i][k];
+                    if (b[i][k] > max) max = b[i][k];
                 }
             }
         return max;
     }
 
     public static void main(String[] args) {
-        int[][] test = {
-                {
-                        0, 1, 0, 0, 1, 0
-                },
-                {
-                        0, 1, 0, 1, 1, 1
-                },
-                {
-                        0, 1, 0, 1, 1, 1
-                },
-                {
-                        1, 0, 0, 1, 1, 1
-                },
-                {
-                        0, 0, 1, 0, 0, 0
-                },
-                {
-                        0, 0, 1, 0, 1, 1
-                }
-        };
-        System.out.println(size(test));
+        int n = Integer.parseInt(StdIn.readLine());
+        int[][] array = new int[n][n];
+        int row = 0;
+        while (StdIn.hasNextLine()) {
+
+            String line = StdIn.readLine();
+            for (int k = 0; k < n; k++) {
+                array[row][k] = line.charAt(k * 2);
+            }
+            row++;
+        }
+        System.out.println(size(array));
     }
 
+
 }
+
+
