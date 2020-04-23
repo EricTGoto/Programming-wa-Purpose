@@ -7,7 +7,7 @@ public class Ramanujan {
         double checkNumRounded = 0;
         double pairNumOne = 0;
         int lowerBound = 0;
-        int numPair=0;
+        int numPair = 0;
         final double THRESHOLD = .0000000000001;
 
         boolean found = false;
@@ -18,14 +18,14 @@ public class Ramanujan {
             checkNumRounded = Math.rint(checkNum);
 
             if (Math.abs(checkNum - checkNumRounded) < THRESHOLD) {
-                if (pairNumOne==checkNumRounded){
+                if (pairNumOne == checkNumRounded) {
                     k--;
                     continue;
                 }
                 pairNumOne = k;
                 numPair++;
             }
-            if (numPair==2) return true;
+            if (numPair == 2) return true;
 
         }
 
