@@ -9,8 +9,7 @@ public class MaximumSquareSubmatrix {
         for (int i = 1; i < b.length; i++)
             for (int k = 1; k < b.length; k++) {
                 if (a[i - 1][k - 1] == 0) {
-                    b[i][k] = Math.min(b[i][k - 1], Math.min(b[i - 1][k - 1], b[i - 1][k]));
-                    if (b[i][k] > max) max = b[i][k];
+                    b[i][k] = 0;
                 } else {
                     b[i][k] = Math.min(b[i][k - 1], Math.min(b[i - 1][k - 1], b[i - 1][k])) + 1;
                     if (b[i][k] > max) max = b[i][k];
