@@ -24,9 +24,8 @@ public class MaximumSquareSubmatrix {
         int row = 0;
         while (StdIn.hasNextLine()) {
 
-            String line = StdIn.readLine();
             for (int k = 0; k < n; k++) {
-                array[row][k] = line.charAt(k * 2);
+                array[row][k] = StdIn.readInt();
             }
             row++;
         }
